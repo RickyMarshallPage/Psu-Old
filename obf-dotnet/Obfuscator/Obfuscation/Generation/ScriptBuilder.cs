@@ -860,7 +860,7 @@ namespace Obfuscator.Obfuscation.Generation
 			{
 				VMTable = ExpandNumberStatements(VMTable);
 			}
-			string Source = "return (function(T, ...) local TEXT = \"This file was obfuscated using PSU Obfuscator 4.0.A | https://www.psu.dev/ & discord.gg/psu\"; " + Variables + Functions + Deserializer + VM;
+			string Source = "return (function(T, ...) local TEXT = \"This file was obfuscated using the 6 month old PSU Obfuscator\"; " + Variables + Functions + Deserializer + VM;
 			Source = Source + " \nend)(({" + VMTable + "}), ...);";
 			if (ObfuscationSettings.EnhancedOutput)
 			{
