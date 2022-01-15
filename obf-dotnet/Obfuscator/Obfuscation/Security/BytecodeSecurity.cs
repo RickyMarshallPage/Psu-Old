@@ -50,8 +50,8 @@ namespace Obfuscator.Obfuscation.Security
 					continue;
 				}
 				string Global = (string)Instruction.References[0].Data;
-				global::Obfuscator.Utility.Utility.VoidInstruction(Chunk.Instructions[InstructionPoint + 1]);
-				global::Obfuscator.Utility.Utility.VoidInstruction(Instruction);
+				Utility.Utility.VoidInstruction(Chunk.Instructions[InstructionPoint + 1]);
+				Utility.Utility.VoidInstruction(Instruction);
 				switch (Global)
 				{
 				case "PSU_MAX_SECURITY_START":

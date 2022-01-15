@@ -95,7 +95,7 @@ namespace Obfuscator.Obfuscation.Security
 							{
 								rInstruction.B = Chunk.InstructionMap[Instruction2];
 								ObfuscationContext.InstructionMapping.TryGetValue(OpCode.None, out var value);
-								Virtual.Obfuscated = "local oInstruction = Instructions[Instruction[OP_B]]; oInstruction[OP_ENUM] = BitXOR(oInstruction[OP_ENUM], VMKey); Instruction[OP_ENUM] = (" + global::Obfuscator.Utility.Utility.IntegerToString(value.VIndex) + ");";
+								Virtual.Obfuscated = "local oInstruction = Instructions[Instruction[OP_B]]; oInstruction[OP_ENUM] = BitXOR(oInstruction[OP_ENUM], VMKey); Instruction[OP_ENUM] = (" + Utility.Utility.IntegerToString(value.VIndex) + ");";
 								rInstruction.InstructionType = InstructionType.ABx;
 								return rInstruction;
 							};

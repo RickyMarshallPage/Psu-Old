@@ -106,7 +106,7 @@ namespace Obfuscator
 			string Input = Path.Combine(Location, "Input.lua");
 			string ByteCode = Path.Combine(Location, "LuaC.out");
 			string src = File.ReadAllText(Input);
-			global::Obfuscator.Utility.Utility.GetExtraStrings(src);
+			Utility.Utility.GetExtraStrings(src);
 			File.WriteAllText(Input, ExtraHeader + "\n" + src);
 			if (!ObfuscationSettings.DisableAllMacros)
 			{
@@ -206,7 +206,7 @@ namespace Obfuscator
 			}
 			if (ObfuscationSettings.PremiumFormat)
 			{
-				global::Obfuscator.Utility.Utility.NoExtraString = true;
+				Utility.Utility.NoExtraString = true;
 				PremiumScriptBuilder ScriptBuilder2 = new PremiumScriptBuilder(HeadChunk, ObfuscationContext, ObfuscationSettings, Virtuals);
 				string Source2 = ScriptBuilder2.BuildScript(Location);
 			}

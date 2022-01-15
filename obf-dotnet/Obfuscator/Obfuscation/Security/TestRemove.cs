@@ -37,9 +37,9 @@ namespace Obfuscator.Obfuscation.Security
 		{
 			List<BasicBlock> BasicBlocks = new BasicBlock().GenerateBasicBlocksFromInstructions(Chunk, Instructions);
 			int TrueIndex;
-			Constant True = global::Obfuscator.Utility.Utility.GetOrAddConstant(Chunk, ConstantType.Boolean, true, out TrueIndex);
+			Constant True = Utility.Utility.GetOrAddConstant(Chunk, ConstantType.Boolean, true, out TrueIndex);
 			int FalseIndex;
-			Constant False = global::Obfuscator.Utility.Utility.GetOrAddConstant(Chunk, ConstantType.Boolean, false, out FalseIndex);
+			Constant False = Utility.Utility.GetOrAddConstant(Chunk, ConstantType.Boolean, false, out FalseIndex);
 			foreach (BasicBlock Block2 in BasicBlocks)
 			{
 				for (int InstructionPoint = 0; InstructionPoint < Block2.Instructions.Count; InstructionPoint++)

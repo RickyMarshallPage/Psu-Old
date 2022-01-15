@@ -82,19 +82,19 @@ namespace Obfuscator.Obfuscation
 				Random.Next(0, 256),
 				Random.Next(0, 256)
 			};
-			Instruction.A = global::Obfuscator.Utility.Utility.GetIndexListNoBrackets();
-			Instruction.B = global::Obfuscator.Utility.Utility.GetIndexListNoBrackets();
-			Instruction.C = global::Obfuscator.Utility.Utility.GetIndexListNoBrackets();
-			Instruction.D = global::Obfuscator.Utility.Utility.GetIndexListNoBrackets();
-			Instruction.E = global::Obfuscator.Utility.Utility.GetIndexListNoBrackets();
-			Instruction.Enum = global::Obfuscator.Utility.Utility.GetIndexListNoBrackets();
-			Instruction.Data = global::Obfuscator.Utility.Utility.GetIndexListNoBrackets();
-			Chunk.ParameterCount = global::Obfuscator.Utility.Utility.GetIndexListNoBrackets();
-			Chunk.Instructions = global::Obfuscator.Utility.Utility.GetIndexListNoBrackets();
-			Chunk.Chunks = global::Obfuscator.Utility.Utility.GetIndexListNoBrackets();
-			Chunk.Constants = global::Obfuscator.Utility.Utility.GetIndexListNoBrackets();
-			Chunk.StackSize = global::Obfuscator.Utility.Utility.GetIndexListNoBrackets();
-			Chunk.InstructionPoint = global::Obfuscator.Utility.Utility.GetIndexListNoBrackets();
+			Instruction.A = Utility.Utility.GetIndexListNoBrackets();
+			Instruction.B = Utility.Utility.GetIndexListNoBrackets();
+			Instruction.C = Utility.Utility.GetIndexListNoBrackets();
+			Instruction.D = Utility.Utility.GetIndexListNoBrackets();
+			Instruction.E = Utility.Utility.GetIndexListNoBrackets();
+			Instruction.Enum = Utility.Utility.GetIndexListNoBrackets();
+			Instruction.Data = Utility.Utility.GetIndexListNoBrackets();
+			Chunk.ParameterCount = Utility.Utility.GetIndexListNoBrackets();
+			Chunk.Instructions = Utility.Utility.GetIndexListNoBrackets();
+			Chunk.Chunks = Utility.Utility.GetIndexListNoBrackets();
+			Chunk.Constants = Utility.Utility.GetIndexListNoBrackets();
+			Chunk.StackSize = Utility.Utility.GetIndexListNoBrackets();
+			Chunk.InstructionPoint = Utility.Utility.GetIndexListNoBrackets();
 			DeserializerInstructionSteps = new List<DeserializerInstructionStep>();
 			PrimaryIndicies = new List<string> { "A", "B", "C" }.Shuffle().ToList();
 			NumberEquations = new Dictionary<long, NumberEquation>();

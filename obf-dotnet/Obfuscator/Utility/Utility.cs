@@ -13,9 +13,7 @@ namespace Obfuscator.Utility
 	{
 		private static List<string> VMStrings = new List<string>
 		{
-			"'psu > luraph' - memcorrupt 2020", "ililililililili guys look at me i'm intimidating", "psu 60fps, luraph 5fps, xen 0fps", "psu premium chads winning (only losers use the free version)", "woooow u hooked an opcode, congratulations! i do NOT give a fuck.", "you dumped constants by printing the deserializer??? ladies and gentlemen stand clear we have a genius in the building.", "ironbrew deobfuscator go brrrrrrrrrrrrrr", "LuraphDeobfuscator.zip (oh god DMCA incoming everyone hide)", "I'm not ignoring you, my DMs are full. Can't DM me? Shoot me a email: mem@mem.rip (Business enquiries only)", "Luraph: Probably considered the worst out of the three, Luraph is another Lua Obfuscator. It isnt remotely as secure as Ironbrew or Synapse Xen, and it isn't as fast as Ironbrew either.",
-			"Are you using AztupBrew, clvbrew, or IB2? Congratulations! You're deobfuscated!", "this isn't krnl support you bonehead moron", "why the fuck would we sell a deobfuscator for a product we created.....", "i am not wally stop asking me for wally hub support please fuck off", "guys someone play Among Us with memcorrupt he is so lonely :(", "Luraph v12.6 has been released!: changed absolutely fucking nothing but donate to my patreon!", "@everyone designs are done. luraph website coming.... eta JULY 2020", "why does psu.dev attract so many ddosing retards wtf", "still waiting for luci to fix the API :|", "luraph is now down until further notice for an emergency major security update",
-			"who the fuck looked at synapse xen and said 'yeah this is good enough for release'", "uh oh everyone watch out pain exist coming in with the backspace method one dot two dot man dot", "oh Mr. Pools, thats a little close please dont touch me there... please Mr. Pools I am only eight years old please stop..."
+			""
 		};
 
 		public static Random Random = new Random();

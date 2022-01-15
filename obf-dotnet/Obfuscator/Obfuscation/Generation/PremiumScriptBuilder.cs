@@ -74,10 +74,10 @@ namespace Obfuscator.Obfuscation.Generation
 				UsedIndicies.Add("[" + Index2 + "]");
 				return new List<string> { "[" + Index2 + "]" };
 			}
-			List<string> Indicies = global::Obfuscator.Utility.Utility.GetIndexList();
+			List<string> Indicies = Utility.Utility.GetIndexList();
 			while (UsedIndicies.Contains(Indicies.First()))
 			{
-				Indicies = global::Obfuscator.Utility.Utility.GetIndexList();
+				Indicies = Utility.Utility.GetIndexList();
 			}
 			foreach (string Index in Indicies)
 			{
@@ -265,7 +265,7 @@ namespace Obfuscator.Obfuscation.Generation
 					SearchPosition += Match.Index + Match.Length;
 					continue;
 				}
-				string Replacement = "(" + global::Obfuscator.Utility.Utility.IntegerToString(Number) + ")";
+				string Replacement = "(" + Utility.Utility.IntegerToString(Number) + ")";
 				Source = Source.Substring(0, SearchPosition + Match.Index + 1) + Replacement + Source.Substring(SearchPosition + Match.Index + Match.Length - 1);
 				SearchPosition += Match.Index + Replacement.Length;
 			}
@@ -806,7 +806,7 @@ namespace Obfuscator.Obfuscation.Generation
 
 		private string GenerateLoader(string Source)
 		{
-			Source = "\r\nPSU_LUA_GENERATION\r\n\r\nlocal Environment = getfenv();\r\n\r\nlocal ToNumber = Environment[\"\\" + string.Join("\\", LuaEncoding.GetBytes("tonumber")) + "\"]; \r\n\r\nPSU_LUA_GENERATION\r\n\r\nlocal SubString = (\"\")[\"\\" + string.Join("\\", LuaEncoding.GetBytes("sub")) + "\"]; \r\nlocal Byte = (\"\")[\"\\" + string.Join("\\", LuaEncoding.GetBytes("byte")) + "\"]; \r\nlocal Character = (\"\")[\"\\" + string.Join("\\", LuaEncoding.GetBytes("char")) + "\"]; \r\n\r\nlocal Concatenate = Environment[\"\\" + string.Join("\\", LuaEncoding.GetBytes("table")) + "\"][\"\\" + string.Join("\\", LuaEncoding.GetBytes("concat")) + "\"]; \r\n\r\nlocal LoadString = ((Environment[\"\\" + string.Join("\\", LuaEncoding.GetBytes("loadstring")) + "\"]) or (Environment[\"\\" + string.Join("\\", LuaEncoding.GetBytes("load")) + "\"]));\r\n\r\nlocal F = (256);\r\nlocal G, Dictionary = ({}), ({}); \r\nfor H = 0, F - 1 do local Value = Character(H); G[H] = Value; Dictionary[H] = Value; Dictionary[Value] = H; end; \r\n\r\nPSU_LUA_GENERATION\r\n\r\nlocal bit32 = ((Environment[\"\\" + string.Join("\\", LuaEncoding.GetBytes("bit32")) + "\"]) or (Environment[\"\\" + string.Join("\\", LuaEncoding.GetBytes("bit")) + "\"]) or ({})); \r\nlocal BitXOR = (((bit32) and (bit32[\"\\" + string.Join("\\", LuaEncoding.GetBytes("bxor")) + "\"])) or (function(A, B) local P, C = 1, 0; while ((A > 0) and (B > 0)) do local X, Y = A % 2, B % 2; if X ~= Y then C = C + P; end; A, B, P = (A - X) / 2, (B - Y) / 2, P * 2; end; if A < B then A = B; end; while A > 0 do local X = A % 2; if X > 0 then C = C + P; end; A, P =(A - X) / 2, P * 2; end; return (C); end));\r\n\r\nlocal PrimaryXORKey = (BitXOR(" + global::Obfuscator.Utility.Utility.IntegerToTable(0) + ", " + global::Obfuscator.Utility.Utility.IntegerToTable(0) + "));\r\n\r\nPSU_LUA_GENERATION\r\n\r\nlocal ByteString, Position = (function(ByteString) local C, D, E = (\"\"), (\"\"), ({}); local I = 1; local function K() local L = ToNumber(SubString(ByteString, I, I), 36); I = I + 1; local M = ToNumber(SubString(ByteString, I, I + L - 1), 36); I = I + L; return (M); end; C = Dictionary[K()]; E[1] = C; while (I < #ByteString) do local N = K(); if G[N] then D = G[N]; else D = C .. SubString(C, 1, 1); end; G[F] = C .. SubString(D, 1, 1); E[#E + 1], C, F = D, D, F + 1; end; return (Concatenate(E)); end)('PSU_BYTECODE'), (" + global::Obfuscator.Utility.Utility.IntegerToTable(1) + ");\r\n\r\n            \r\nPSU_LUA_GENERATION\r\n\r\n" + string.Join("\n", new List<string> { "local function gBits32() local W, X, Y, Z = Byte(ByteString, Position, Position + 3); W = BitXOR(W, PrimaryXORKey); X = BitXOR(X, PrimaryXORKey); Y = BitXOR(Y, PrimaryXORKey); Z = BitXOR(Z, PrimaryXORKey); Position = Position + 4; return ((Z * 16777216) + (Y * 65536) + (X * 256) + W); end;", "local function gBits16() local W, X = Byte(ByteString, Position, Position + 2); W = BitXOR(W, PrimaryXORKey); X = BitXOR(X, PrimaryXORKey); Position = Position + 2; return ((X * 256) + W); end;", "local function gBits8() local F = BitXOR(Byte(ByteString, Position, Position), PrimaryXORKey); Position = (Position + 1); return (F); end;", "local function gBit(Bit, Start, End) if (End) then local R = (Bit / 2 ^ (Start - 1)) % 2 ^ ((End - 1) - (Start - 1) + 1); return (R - (R % 1)); else local P = 2 ^ (Start - 1); return (((Bit % (P + P) >= P) and (1)) or(0)); end; end;" }.Shuffle()) + " \r\n\r\nPSU_LUA_GENERATION\r\n\r\nlocal Information = PSU_VM_TABLE; \r\n\r\nPSU_LUA_GENERATION\r\n\r\nreturn LoadString(SubString(ByteString, Position))(Information or (function(...) PSU_LUA_GENERATION end), ...);";
+			Source = "\r\nPSU_LUA_GENERATION\r\n\r\nlocal Environment = getfenv();\r\n\r\nlocal ToNumber = Environment[\"\\" + string.Join("\\", LuaEncoding.GetBytes("tonumber")) + "\"]; \r\n\r\nPSU_LUA_GENERATION\r\n\r\nlocal SubString = (\"\")[\"\\" + string.Join("\\", LuaEncoding.GetBytes("sub")) + "\"]; \r\nlocal Byte = (\"\")[\"\\" + string.Join("\\", LuaEncoding.GetBytes("byte")) + "\"]; \r\nlocal Character = (\"\")[\"\\" + string.Join("\\", LuaEncoding.GetBytes("char")) + "\"]; \r\n\r\nlocal Concatenate = Environment[\"\\" + string.Join("\\", LuaEncoding.GetBytes("table")) + "\"][\"\\" + string.Join("\\", LuaEncoding.GetBytes("concat")) + "\"]; \r\n\r\nlocal LoadString = ((Environment[\"\\" + string.Join("\\", LuaEncoding.GetBytes("loadstring")) + "\"]) or (Environment[\"\\" + string.Join("\\", LuaEncoding.GetBytes("load")) + "\"]));\r\n\r\nlocal F = (256);\r\nlocal G, Dictionary = ({}), ({}); \r\nfor H = 0, F - 1 do local Value = Character(H); G[H] = Value; Dictionary[H] = Value; Dictionary[Value] = H; end; \r\n\r\nPSU_LUA_GENERATION\r\n\r\nlocal bit32 = ((Environment[\"\\" + string.Join("\\", LuaEncoding.GetBytes("bit32")) + "\"]) or (Environment[\"\\" + string.Join("\\", LuaEncoding.GetBytes("bit")) + "\"]) or ({})); \r\nlocal BitXOR = (((bit32) and (bit32[\"\\" + string.Join("\\", LuaEncoding.GetBytes("bxor")) + "\"])) or (function(A, B) local P, C = 1, 0; while ((A > 0) and (B > 0)) do local X, Y = A % 2, B % 2; if X ~= Y then C = C + P; end; A, B, P = (A - X) / 2, (B - Y) / 2, P * 2; end; if A < B then A = B; end; while A > 0 do local X = A % 2; if X > 0 then C = C + P; end; A, P =(A - X) / 2, P * 2; end; return (C); end));\r\n\r\nlocal PrimaryXORKey = (BitXOR(" + Utility.Utility.IntegerToTable(0) + ", " + Utility.Utility.IntegerToTable(0) + "));\r\n\r\nPSU_LUA_GENERATION\r\n\r\nlocal ByteString, Position = (function(ByteString) local C, D, E = (\"\"), (\"\"), ({}); local I = 1; local function K() local L = ToNumber(SubString(ByteString, I, I), 36); I = I + 1; local M = ToNumber(SubString(ByteString, I, I + L - 1), 36); I = I + L; return (M); end; C = Dictionary[K()]; E[1] = C; while (I < #ByteString) do local N = K(); if G[N] then D = G[N]; else D = C .. SubString(C, 1, 1); end; G[F] = C .. SubString(D, 1, 1); E[#E + 1], C, F = D, D, F + 1; end; return (Concatenate(E)); end)('PSU_BYTECODE'), (" + Utility.Utility.IntegerToTable(1) + ");\r\n\r\n            \r\nPSU_LUA_GENERATION\r\n\r\n" + string.Join("\n", new List<string> { "local function gBits32() local W, X, Y, Z = Byte(ByteString, Position, Position + 3); W = BitXOR(W, PrimaryXORKey); X = BitXOR(X, PrimaryXORKey); Y = BitXOR(Y, PrimaryXORKey); Z = BitXOR(Z, PrimaryXORKey); Position = Position + 4; return ((Z * 16777216) + (Y * 65536) + (X * 256) + W); end;", "local function gBits16() local W, X = Byte(ByteString, Position, Position + 2); W = BitXOR(W, PrimaryXORKey); X = BitXOR(X, PrimaryXORKey); Position = Position + 2; return ((X * 256) + W); end;", "local function gBits8() local F = BitXOR(Byte(ByteString, Position, Position), PrimaryXORKey); Position = (Position + 1); return (F); end;", "local function gBit(Bit, Start, End) if (End) then local R = (Bit / 2 ^ (Start - 1)) % 2 ^ ((End - 1) - (Start - 1) + 1); return (R - (R % 1)); else local P = 2 ^ (Start - 1); return (((Bit % (P + P) >= P) and (1)) or(0)); end; end;" }.Shuffle()) + " \r\n\r\nPSU_LUA_GENERATION\r\n\r\nlocal Information = PSU_VM_TABLE; \r\n\r\nPSU_LUA_GENERATION\r\n\r\nreturn LoadString(SubString(ByteString, Position))(Information or (function(...) PSU_LUA_GENERATION end), ...);";
 			return Source;
 		}
 
@@ -905,7 +905,7 @@ namespace Obfuscator.Obfuscation.Generation
 			{
 				File.WriteAllText(Path.Combine(Location, "Output_pass1.lua"), tempsource);
 			}
-			global::Obfuscator.Utility.Utility.NoExtraString = false;
+			Utility.Utility.NoExtraString = false;
 			string Script = File.ReadAllText(Path.Combine(Location, "Output.lua"), LuaEncoding);
 			Source = GenerateLoader(Script);
 			List<byte> Bytes = LuaEncoding.GetBytes(Script).ToList();
@@ -946,7 +946,7 @@ namespace Obfuscator.Obfuscation.Generation
 				}
 				break;
 			}
-			Source = global::Obfuscator.Utility.Utility.FinalReplaceStrings(Source);
+			Source = Utility.Utility.FinalReplaceStrings(Source);
 			File.WriteAllText(Path.Combine(Location, "VM.lua"), Source);
 			process = new Process();
 			process.StartInfo.WorkingDirectory = "Lua/lua";
@@ -960,7 +960,7 @@ namespace Obfuscator.Obfuscation.Generation
 			Process.WaitForExit();
 			Source = File.ReadAllText(Path.Combine(Location, "Output.lua"), LuaEncoding);
 			Source = Source.Replace("[.", "[0.");
-			Source = global::Obfuscator.Utility.Utility.FinalReplaceStrings(Source);
+			Source = Utility.Utility.FinalReplaceStrings(Source);
 			File.WriteAllText(Path.Combine(Location, "Output.lua"), Source, LuaEncoding);
 			return Source;
 			string GenerateCode()

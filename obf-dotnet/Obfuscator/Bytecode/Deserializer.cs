@@ -483,7 +483,7 @@ namespace Obfuscator.Bytecode
 					OpCode opCode2 = opCode;
 					if ((uint)(opCode2 - 23) <= 4u || opCode2 == OpCode.OpTForLoop)
 					{
-						global::Obfuscator.Utility.Utility.VoidInstruction(Chunk.Instructions[InstructionPoint3 + 1]);
+						Utility.Utility.VoidInstruction(Chunk.Instructions[InstructionPoint3 + 1]);
 						Chunk.Instructions.RemoveAt(InstructionPoint3 + 1);
 					}
 				}

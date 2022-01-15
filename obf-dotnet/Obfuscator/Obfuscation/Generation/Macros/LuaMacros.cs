@@ -39,9 +39,9 @@ namespace Obfuscator.Obfuscation.Generation.Macros
 					object obj2 = obj;
 					if (obj2 is string text && text == "PSU_GETSTACK")
 					{
-						global::Obfuscator.Utility.Utility.VoidInstruction(Chunk.Instructions[InstructionPoint + 1]);
+						Utility.Utility.VoidInstruction(Chunk.Instructions[InstructionPoint + 1]);
 						Chunk.Instructions.RemoveAt(InstructionPoint + 1);
-						global::Obfuscator.Utility.Utility.VoidInstruction(Instruction);
+						Utility.Utility.VoidInstruction(Instruction);
 						Instruction.OpCode = OpCode.OpGetStack;
 						Instruction.A = A;
 					}

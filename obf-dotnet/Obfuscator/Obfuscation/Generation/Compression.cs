@@ -20,11 +20,11 @@ namespace Obfuscator.Obfuscation.Generation
 			{
 				if (Random.Next(0, 2) == 0)
 				{
-					StringBuilder.Insert(0, "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"[(byte)(Value % 36uL)]);
+					StringBuilder.Insert(0, UpperCaseBase36[(byte)(Value % 36uL)]);
 				}
 				else
 				{
-					StringBuilder.Insert(0, "0123456789abcdefghijklmnopqrstuvwxyz"[(byte)(Value % 36uL)]);
+					StringBuilder.Insert(0, LowerCaseBase36[(byte)(Value % 36uL)]);
 				}
 				Value /= 36uL;
 			}

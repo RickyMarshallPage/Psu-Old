@@ -76,10 +76,10 @@ namespace Obfuscator.Obfuscation.Generation
 				UsedIndicies.Add("[" + Index2 + "]");
 				return new List<string> { "[" + Index2 + "]" };
 			}
-			List<string> Indicies = global::Obfuscator.Utility.Utility.GetIndexList();
+			List<string> Indicies = Utility.Utility.GetIndexList();
 			while (UsedIndicies.Contains(Indicies.First()))
 			{
-				Indicies = global::Obfuscator.Utility.Utility.GetIndexList();
+				Indicies = Utility.Utility.GetIndexList();
 			}
 			foreach (string Index in Indicies)
 			{
@@ -267,7 +267,7 @@ namespace Obfuscator.Obfuscation.Generation
 					SearchPosition += Match.Index + Match.Length;
 					continue;
 				}
-				string Replacement = "(" + global::Obfuscator.Utility.Utility.IntegerToString(Number) + ")";
+				string Replacement = "(" + Utility.Utility.IntegerToString(Number) + ")";
 				Source = Source.Substring(0, SearchPosition + Match.Index + 1) + Replacement + Source.Substring(SearchPosition + Match.Index + Match.Length - 1);
 				SearchPosition += Match.Index + Replacement.Length;
 			}
@@ -904,7 +904,7 @@ namespace Obfuscator.Obfuscation.Generation
 			Process.WaitForExit();
 			Source = File.ReadAllText(Path.Combine(Location, "Output.lua"), LuaEncoding).Replace("\n", " ");
 			Source = Source.Replace("[.", "[0.");
-			Source = global::Obfuscator.Utility.Utility.FinalReplaceStrings(Source);
+			Source = Utility.Utility.FinalReplaceStrings(Source);
 			File.WriteAllText(Path.Combine(Location, "Output.lua"), Source.Replace("PSU_BYTECODE", ObfuscationContext.ByteCode).Replace("PSU_FORMAT_TABLE", ObfuscationContext.FormatTable));
 			return Source;
 			string GenerateCode()
