@@ -6,3 +6,8 @@
 
 
 #NOT INCLUDING LIBRARIES
+
+
+;) ;)
+
+obf-dotnet.csproj
