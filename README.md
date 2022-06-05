@@ -2,10 +2,7 @@
 
 6 month old PSU source code
 
-# Open Sourced
-
-#XDFGUKGNTGNNTUBU&
-#NOT INCLUDING LIBRARIES
+# NOT INCLUDING LIBRARIES
 
 
 ;) ;)
